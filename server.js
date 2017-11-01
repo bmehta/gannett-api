@@ -27,3 +27,4 @@ server.listen(port, function() {
     console.log('api running at ' + port);
 });
 
+module.exports = server;
