@@ -3,26 +3,31 @@ function NumbersController() {
     that.history = [];
     that.sum = 0;
     that.sumindex = -1;
-    const fibonacciCount = 30;
+    that.fibonacciCount = 30;
+    that.fibArray = [];
 
     that.fibonacci = function(req, res, next) {
         console.log('In fibonacci');
-        var fib = that.getFibonacci(30);
+        var fib = that.getFibonacci(that.fibonacciCount);
         console.log(fib);
         res.send(200, fib);
         return next();
     };
 
     that.getFibonacci = function(n) {
-        var fibArray = [0,1];
-        var i=0, j=1;
-        for (var k=0; k<n-2; k++) {
-            var x = i + j;
-            fibArray.push(x);
-            i = j;
-            j= x;
+        if (that.fibArray.length < n) {
+            that.fibArray = [0,1];
+            var i=0, j=1;
+            for (var k=0; k<n-2; k++) {
+                var x = i + j;
+                that.fibArray.push(x);
+                i = j;
+                j= x;
+            }
         }
-        return fibArray;
+
+        return that.fibArray;
+
     };
 
 

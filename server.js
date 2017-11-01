@@ -1,5 +1,5 @@
 /*
-TODO: change get sum to PUT
+TODO: error handling
 */
 
 var restify = require('restify'),
@@ -18,14 +18,6 @@ server.use(function(req, res, next){
 });
 
 server.use(restify.plugins.bodyParser());
-
-/*
-server.get('/', function (req, res, next) {
-    console.log('In /');
-    res.send('okay');
-    return next();
-});
-*/
 
 server.get('api/fibonacci', numbers.fibonacci);
 server.post('api/post/', numbers.post);
