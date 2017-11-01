@@ -17,15 +17,19 @@ server.use(function(req, res, next){
     return next();
 });
 
+server.use(restify.plugins.bodyParser());
+
+/*
 server.get('/', function (req, res, next) {
     console.log('In /');
     res.send('okay');
     return next();
 });
+*/
 
 server.get('api/fibonacci', numbers.fibonacci);
-server.get('api/sum/:id', numbers.put);
-server.get('api/sum', numbers.sum);
+server.post('api/post/', numbers.post);
+server.get('api/total', numbers.total);
 
 server.listen(port, function() {
     console.log('api running at ' + port);
