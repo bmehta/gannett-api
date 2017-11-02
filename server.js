@@ -3,6 +3,7 @@ TODO:
 error handling
 in tests change to async/await
 add versioning to url
+add README.md
 */
 
 var restify = require('restify'),
