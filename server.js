@@ -1,5 +1,8 @@
 /*
-TODO: error handling
+TODO:
+error handling
+in tests change to async/await
+add versioning to url
 */
 
 var restify = require('restify'),
