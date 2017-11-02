@@ -32,7 +32,6 @@ function NumbersController() {
 
 
     that.post = function(req, res, next) {
-        console.log('In post: ' + req.body);
         var bodyObj = JSON.parse(req.body);
 
         console.log('In post body: ' + bodyObj);
@@ -42,13 +41,12 @@ function NumbersController() {
         }else {
             var number = parseInt(bodyObj.number);
             that.history.push(number);
-            res.send(201);
+            res.send(201, number.toString());
         }
         return next();
     };
 
     that.total = function(req, res, next) {
-        console.log('In sum, that.history' + that.history);
 
         // Re-calculate sum if new elements have been added to the array (lazy);
 
