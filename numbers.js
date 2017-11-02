@@ -30,8 +30,15 @@ function NumbersController() {
 
     };
 
+    that.getHistory = function(req, res, next) {
+        res.send(200, that.history);
+        return next();
+    };
+
 
     that.post = function(req, res, next) {
+        var bodyStr = JSON.stringify(req.body);
+        console.log('Request body: ' + bodyStr);
         var bodyObj = JSON.parse(req.body);
 
         console.log('In post body: ' + bodyObj);
