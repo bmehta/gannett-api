@@ -7,7 +7,7 @@ To get you started you can simply clone the `gannett-api` repository and install
 
 ### Prerequisites
 
-You need git to clone the `gannett-api` repository. You can get git from [here][git].
+You need git to clone the `gannett-api` repository.
 
 We also use a number of Node.js tools to initialize and test `gannett-api`. You must have Node.js
 and its package manager (npm) installed. You can get them from [here][node].
