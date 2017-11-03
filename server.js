@@ -1,9 +1,5 @@
 /*
-TODO:
-error handling
-in tests change to async/await
-add versioning to url
-add README.md
+TODO: error handling
 */
 
 var restify = require('restify'),
@@ -41,9 +37,6 @@ function optionsRoute(req, res, next) {
     res.send(200);
     return next();
 }
-
-
-
 
 server.use(restify.plugins.bodyParser());
 
