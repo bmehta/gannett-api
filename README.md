@@ -44,5 +44,5 @@ Now browse to the app at a url like [`localhost:3000/api/fibonacci`].
 The easiest way to run the unit tests is to use the supplied npm script:
 
 ```
-npm test
+npm test (Please make sure that you stop the process started by npm start)
 ```
