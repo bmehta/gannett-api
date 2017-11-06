@@ -4,6 +4,7 @@ TODO: error handling
 
 var restify = require('restify'),
     numbers = require('./numbers'),
+    errs = require('restify-errors'),
     port = process.env.PORT || 3000;
 
 var server = restify.createServer({
@@ -33,6 +34,10 @@ server.get('api/fibonacci', numbers.fibonacci);
 server.post('api/post/', numbers.post);
 server.get('api/total', numbers.total);
 server.get('api/history', numbers.getHistory);
+
+server.on('uncaughtException', (req, res, route, err) => {
+    console.log('Uncaught excpetion:' + err);
+});
 
 server.listen(port, function() {
     console.log('api running at ' + port);

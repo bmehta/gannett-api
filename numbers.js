@@ -7,11 +7,16 @@ function NumbersController() {
     that.fibArray = [];
 
     that.fibonacci = function(req, res, next) {
-        console.log('In fibonacci');
-        var fib = that.getFibonacci(that.fibonacciCount);
-        console.log(fib);
-        res.send(200, fib);
-        return next();
+        try {
+            console.log('In fibonacci');
+            var fib = that.getFibonacci(that.fibonacciCount);
+            console.log(fib);
+            res.send(200, fib);
+            return next();
+        } catch(e) {
+            var err = new restify.errors.InternalServerError(e.message);
+            return next(err);
+        }
     };
 
     that.getFibonacci = function(n) {
@@ -31,8 +36,13 @@ function NumbersController() {
     };
 
     that.getHistory = function(req, res, next) {
-        res.send(200, that.history);
-        return next();
+        try{
+            res.send(200, that.history);
+            return next();
+        } catch(e) {
+            var err = new restify.errors.InternalServerError(e.message);
+            return next(err);
+        }
     };
 
 
@@ -54,18 +64,23 @@ function NumbersController() {
     };
 
     that.total = function(req, res, next) {
+        try{
 
-        // Re-calculate sum if new elements have been added to the array (lazy);
+            // Re-calculate sum if new elements have been added to the array (lazy);
 
-        if (that.sumindex < that.history.length -1) {
-            for (var i = that.sumindex + 1; i< that.history.length; i++) {
-                that.sum += that.history[i];
+            if (that.sumindex < that.history.length -1) {
+                for (var i = that.sumindex + 1; i< that.history.length; i++) {
+                    that.sum += that.history[i];
+                }
+                that.sumindex = that.history.length -1;
             }
-            that.sumindex = that.history.length -1;
-        }
 
-        res.send(200, that.sum.toString());
-        return next();
+            res.send(200, that.sum.toString());
+            return next();
+        } catch(e){
+            var err = new restify.errors.InternalServerError(e.message);
+            return next(err);
+        }
     };
 }
 
