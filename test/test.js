@@ -71,3 +71,18 @@ describe('/GET total', () => {
 })
 })
 })
+
+// Test GET history
+describe('/GET history', () => {
+    it('it should GET the history', (done) => {
+    chai.request(server)
+        .get('/api/history')
+        .end((err, res) => {
+        res.should.have.status(200);
+    res.body.should.be.a('array');
+    res.body.length.should.be.eql(2);
+    res.body.should.be.eql([3,5]);
+    done();
+})
+})
+})
