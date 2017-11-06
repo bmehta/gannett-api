@@ -8,7 +8,7 @@ var restify = require('restify'),
     port = process.env.PORT || 3000;
 
 var server = restify.createServer({
-    name: 'Numbers server',
+    name: 'Gannett Numbers server',
     version: '1.0.0'
 });
 
