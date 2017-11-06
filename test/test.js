@@ -74,7 +74,7 @@ describe('/GET total', () => {
 
 // Test GET history
 describe('/GET history', () => {
-    it('it should GET the history', (done) => {
+    it('it should GET the history in an array [3.5]', (done) => {
     chai.request(server)
         .get('/api/history')
         .end((err, res) => {
