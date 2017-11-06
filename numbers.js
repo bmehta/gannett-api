@@ -1,3 +1,6 @@
+var restify = require('restify');
+var errors = require('restify-errors');
+
 function NumbersController() {
     var that = this;
     that.history = [];
@@ -8,13 +11,11 @@ function NumbersController() {
 
     that.fibonacci = function(req, res, next) {
         try {
-            console.log('In fibonacci');
             var fib = that.getFibonacci(that.fibonacciCount);
-            console.log(fib);
             res.send(200, fib);
             return next();
         } catch(e) {
-            var err = new restify.errors.InternalServerError(e.message);
+            var err = new errors.InternalServerError(e.message);
             return next(err);
         }
     };
@@ -40,21 +41,17 @@ function NumbersController() {
             res.send(200, that.history);
             return next();
         } catch(e) {
-            var err = new restify.errors.InternalServerError(e.message);
+            var err = new errors.InternalServerError(e.message);
             return next(err);
         }
     };
 
 
     that.post = function(req, res, next) {
-        var bodyStr = JSON.stringify(req.body);
-        console.log('Request body: ' + bodyStr);
         var bodyObj = JSON.parse(req.body);
-
-        console.log('In post body: ' + bodyObj);
         if (!bodyObj.hasOwnProperty('number')) {
             console.log('property number not found');
-            res.send(500);
+            res.send(500, 'Property number not found');
         }else {
             var number = parseInt(bodyObj.number);
             that.history.push(number);
@@ -78,7 +75,7 @@ function NumbersController() {
             res.send(200, that.sum.toString());
             return next();
         } catch(e){
-            var err = new restify.errors.InternalServerError(e.message);
+            var err = new errors.InternalServerError(e.message);
             return next(err);
         }
     };
