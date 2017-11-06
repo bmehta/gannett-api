@@ -16,7 +16,6 @@ server.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token');
-    //res.header("Access-Control-Allow-Headers", "X-Requested-With");
     return next();
 });
 
