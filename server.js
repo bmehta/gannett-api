@@ -21,12 +21,6 @@ server.use(function(req, res, next){
 
 server.opts('/\.*/', optionsRoute);
 
-function setCorsHeaders(res){
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-}
-
 function optionsRoute(req, res, next) {
 
     res.send(200);
