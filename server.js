@@ -1,7 +1,3 @@
-/*
-TODO: error handling
-*/
-
 var restify = require('restify'),
     numbers = require('./numbers'),
     errs = require('restify-errors'),
