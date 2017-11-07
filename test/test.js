@@ -24,11 +24,9 @@ describe('/GET fibonacci', () => {
  */
 describe('/POST number', () => {
     it('it should POST a number 3', (done) => {
-    var num = '{"number": 3}';
     chai.request(server)
         .post('/api/post')
-        .set('content-type', 'json')
-        .send(num)
+        .send({number:3})
         .end((err, res) => {
         res.should.have.status(201);
         res.body.should.be.eql('3');
@@ -43,11 +41,10 @@ describe('/POST number', () => {
  */
 describe('/POST number', () => {
     it('it should POST a number 5', (done) => {
-    var num = '{"number": 5}';
+    
     chai.request(server)
         .post('/api/post')
-        .set('content-type', 'json')
-        .send(num)
+        .send({number:5})
         .end((err, res) => {
         res.should.have.status(201);
         res.body.should.be.eql('5')

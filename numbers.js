@@ -11,6 +11,7 @@ function NumbersController() {
     that.fibonacciCount = 30;
     that.fibArray = [];
 
+    // Function to return first 30 fibonacci
     that.fibonacci = function(req, res, next) {
         try {
             var fib = that.getFibonacci(that.fibonacciCount);
@@ -38,6 +39,7 @@ function NumbersController() {
 
     };
 
+    // Function to return history of selected numbers
     that.getHistory = function(req, res, next) {
         try{
             res.send(200, that.history);
@@ -48,9 +50,9 @@ function NumbersController() {
         }
     };
 
-
+    // Function to post a number and push it to history
     that.post = function(req, res, next) {
-        var bodyObj = JSON.parse(req.body);
+        var bodyObj = req.body;
         if (!bodyObj.hasOwnProperty('number')) {
             console.log('property number not found');
             res.send(500, 'Property number not found');
@@ -62,6 +64,7 @@ function NumbersController() {
         return next();
     };
 
+    // Function to lazy calculate the total
     that.total = function(req, res, next) {
         try{
 
