@@ -1,4 +1,4 @@
-# `gannett-ui` — the UI for the Gannett application
+# `gannett-api` — the API for the Gannett application
 
 
 ## Getting Started
